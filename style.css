@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ---------- Header (логотип + заголовок) ---------- */
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 15px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  height: 60px;
+}
+
+.header-left h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* ---------- Вопрос + Фото турбины ---------- */
+.intro-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.intro-left {
+  flex: 1 1 500px;
+}
+
+.main-question h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.hypotheses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hypothesis-item {
+  font-size: 18px;
+  color: #004e75;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hypothesis-item:hover {
+  color: #ff8c42;
+}
+
+.intro-right {
+  flex: 0 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.header-photo {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  margin-left: -60px;
+}
+
+/* ---------- Карта ---------- */
+.map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+#windMap {
+  height: 480px;
+  width: 90%;
+  max-width: 1000px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- Кнопки стран ---------- */
+.country-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.country-buttons button {
+  padding: 10px 18px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.country-buttons button:hover {
+  background: #0056b3;
+}
+
+/* ---------- Модальное окно ---------- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  width: 60%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ---------- Кнопка на карте ---------- */
+.custom-div-icon .map-button {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.custom-div-icon .map-button:hover {
+  background-color: #1e7e34;
+}
+
+/* ---------- график 1 вопрос ---------- */
+.wind-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-left: 160px;
+  width: 100%;
+  gap: 30px;
+}
+
+#barChart {
+  flex: 1 1 75%;
+  min-width: 700px;
+  max-width: 1000px;
+}
+
+.wind-controls {
+  width: 260px;
+  max-width: 280px;
+  background-color: #fff;
+  padding: 20px;
+  margin-left: 20px;
+  border-left: 2px solid #eee;
+  box-shadow: -2px 0 6px rgba(0,0,0,0.05);
+}
+
+.wind-controls h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
+.wind-controls button {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  font-size: 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.wind-controls button:hover {
+  background-color: #1e7e34;
+}
+
+/* ---------- график 2 вопрос ---------- */
+.chart-container {
+  width: 1200px;
+  height: 700px;
+  margin: 40px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.chart-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.chart-buttons button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  background: #f4a100;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.chart-buttons button:hover {
+  background-color: #db9000;
+}
+
+/* ---------- 2 вертикальных графика ---------- */
+.dual-bar-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.dual-bar-wrapper canvas {
+  width: 460px !important;
+  height: 360px !important;
+  max-width: 100%;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ---------- Bubble chart ---------- */
+#bubbleChart2030 {
+  width: 1200px;
+  height: 700px;
+  margin: 40px auto;
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+/* ---------- Pyramid Block ---------- */
+.title {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.pyramid-wrapper {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.real-pyramid {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  background: linear-gradient(
+    to bottom,
+    #f4a100 0%,
+    #f4a100 33.33%,
+    #28a745 33.33%,
+    #28a745 66.66%,
+    #00b4c9 66.66%,
+    #00b4c9 100%
+  );
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.label.a1 { top: 15%; left: 50%; transform: translateX(-50%); }
+.label.b2 { top: 47%; left: 50%; transform: translateX(-50%); }
+.label.c3 { top: 78%; left: 50%; transform: translateX(-50%); }
+
+.explanation {
+  position: absolute;
+  width: 250px;
+  font-size: 13px;
+  color: #333;
+}
+
+.explanation .percent {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.explanation p {
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: lightgray;
+  position: relative;
+  display: inline-block;
+}
+
+.pie {
+  background: conic-gradient(
+    var(--pie-color) var(--pie-percent),
+    #e0e0e0 0
+  );
+}
+
+.pie-30 { --pie-percent: 30%; --pie-color: #00b4c9; }
+.pie-50 { --pie-percent: 50%; --pie-color: #28a745; }
+.pie-85 { --pie-percent: 85%; --pie-color: #f4a100; }
+
+.left { left: 0; top: 150px; }
+.right.top { right: 0; top: 30px; }
+.right.bottom { right: 0; top: 230px; }
+
+.dot-line {
+  height: 2px;
+  border-top: 2px dotted #888;
+  margin-top: 10px;
+  width: 80px;
+}
+
+
+
+
+/* ---------- пред последний график на вырос ---------- */
+.chart-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* ---------- Global heading and text styles ---------- */
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+p, .label, .explanation {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ---------- Centering chart to fix "shifted left" issue ---------- */
+.chart-wrapper.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}

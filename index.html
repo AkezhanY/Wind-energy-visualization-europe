@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wind Energy in Europe</title>
+
+  <!-- External Libraries -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Local Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="header-wrapper">
+    <div class="header-left">
+      <img src="https://i.postimg.cc/zX0g8h41/2025-06-13-012731.png" class="icon" />
+      <h1>Wind Energy in Europe</h1>
+    </div>
+  </div>
+
+  <!-- Intro Section -->
+  <section class="intro-question">
+    <div class="intro-left">
+      <div class="main-question">
+        <h2>Why is wind energy becoming a strategic priority in modern Europe?</h2>
+      </div>
+      <div class="hypotheses-list">
+        <div class="hypothesis-item" onclick="scrollToSection('map-section')">Which European countries lead in wind power capacity and infrastructure?</div>
+        <div class="hypothesis-item" onclick="scrollToSection('bar-section')">How has wind energy evolved across Europe in the last decade?</div>
+        <div class="hypothesis-item" onclick="scrollToSection('bubble-section')">What role will wind power play in Europe's energy future?</div>
+      </div>
+    </div>
+    <div class="intro-right">
+      <img src="https://i.ibb.co/35yWChq8/wind-turbine.png" class="header-photo" />
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <div class="map-container">
+    <h2 style="text-align: center;">Wind Energy Presence in Europe</h2>
+    <div id="windMap" style="height: 500px;"></div>
+
+    <!-- Modal -->
+    <div id="infoModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="countryTitle"></h3>
+        <p id="countryDetails"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div id="map-section" class="wind-container">
+    <div id="barChart"></div>
+    <div class="wind-controls">
+      <h3>Compare by:</h3>
+      <button onclick="updateChart('turbines')">Total Turbines</button>
+      <button onclick="updateChart('production')">Annual Production</button>
+      <button onclick="updateChart('revenue')">Revenue</button>
+      <button onclick="updateChart('exports')">Exports</button>
+      <button onclick="updateChart('speed')">Wind Speed</button>
+    </div>
+  </div>
+
+  <!-- Time-based Chart Section -->
+  <h2 style="text-align: center; margin-bottom: 20px;">
+    How has Green Energy evolved across Europe in the last decade?
+  </h2>
+  <div class="chart-buttons">
+    <button onclick="showChart('turbines')">Top 10 Countries 🔢 — Wind Turbines</button>
+    <button onclick="showChart('production')">Top 10 Countries 🔋 — Energy Production</button>
+    <button onclick="showChart('turbines_full')">Full List — Wind Turbines</button>
+    <button onclick="showChart('production_full')">Full List — Energy Production</button>
+  </div>
+  <div class="chart-container">
+    <canvas id="windTurbineChart" width="1000" height="600"></canvas>
+  </div>
+
+  <p style="max-width: 900px; margin: 0 auto 16px auto; font-size: 16px; text-align: center;">
+    The expansion of wind energy across Europe has significantly contributed to reducing greenhouse gas emissions. 
+    By replacing fossil-based power sources like coal and gas, wind energy helps save millions of tons of CO₂ every year.
+  </p>
+
+  <p style="max-width: 900px; margin: 0 auto 30px auto; font-size: 16px; text-align: center;">
+    As countries invest more in renewables, the share of fossil fuels in the energy mix steadily declines. 
+    Wind power plays a vital role in decreasing Europe's dependency on oil and coal, promoting a cleaner and more sustainable energy future.
+  </p>
+
+  <div id="bar-section" class="dual-bar-wrapper">
+    <canvas id="co2Chart"></canvas>
+    <canvas id="fossilChart"></canvas>
+  </div>
+
+  <!-- Pyramid Section -->
+  <h2 style="text-align: center; font-size: 28px; margin-top: 40px;">
+    Wind Energy Growth in Europe by 2030
+  </h2>
+
+  
+   
+  
+ 
+  <div class="chart-container">
+    <canvas id="europeGrowthChart"></canvas>
+  </div>
+
+  <h2 class="title">Investment in Wind Energy</h2>
+
+  <div class="pyramid-wrapper">
+    <!-- Left explanation -->
+    <div class="explanation left">
+      <div class="circle pie pie-30"></div>
+      <div class="percent">30%</div>
+      <p>Early investments in wind energy focus on grid modernization and onshore project acceleration across Eastern Europe.</p>
+      <div class="dot-line line-bottom"></div>
+    </div>
+
+    <!-- Right explanation top -->
+    <div class="explanation right top">
+      <div class="circle pie pie-85"></div>
+      <div class="percent">85%</div>
+      <p>By 2030, most investments are expected to go into large-scale offshore wind farms in the North and Baltic seas.</p>
+      <div class="dot-line line-top"></div>
+    </div>
+
+    <!-- Right explanation bottom -->
+    <div class="explanation right bottom">
+      <div class="circle pie pie-50"></div>
+      <div class="percent">50%</div>
+      <p>Expansion projects across 10+ EU countries aim to double wind capacity and develop cross-border infrastructure.</p>
+      <div class="dot-line line-middle"></div>
+    </div>
+
+    <!-- Main pyramid -->
+    <div class="real-pyramid">
+      <a href="https://energy.ec.europa.eu/topics/renewable-energy/eu-wind-energy_en" target="_blank" class="label a1">A1</a>
+      <a href="https://maritime-forum.ec.europa.eu/contents/investment-ports-offshore-wind_en" target="_blank" class="label b2">B2</a>
+      <a href="https://www.innovationnewsnetwork.com/wind-energy-eu-governments-must-make-implementation-easy-efficient-and-sexy/52741/" target="_blank" class="label c3">C3</a>
+    </div>
+  </div>
+
+  <!-- Local script at the bottom for full DOM load -->
+  <script>
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
