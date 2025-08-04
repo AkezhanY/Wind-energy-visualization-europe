@@ -1,4 +1,4 @@
-# 🌬️ Wind Energy Visualization in Europe
+#  Wind Energy Visualization in Europe
 
 This interactive project visualizes wind energy trends in Europe from **2015 to 2030**.
 
