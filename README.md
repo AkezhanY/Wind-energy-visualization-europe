@@ -18,4 +18,4 @@ This interactive project visualizes wind energy trends in Europe from **2015 to 
 1. Clone or download this repository.
 2. Run a local server:
    ```bash
-   python -m http.server
+   https://moonlit-croquembouche-6ea35c.netlify.app/
